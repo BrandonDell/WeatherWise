@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header class="p-5 text-center text-white bg-primary">
+    <header class="p-5 text-3xl  text-center underline text-sky-500 bg-cyan-300">
       <h1>Weather Dashboard</h1>
     </header>
     <main>
-      <aside class="card card-round col-7 bg-white">
-        <h2 class="card-header text-uppercase">Search For A City</h2>
-        <form id="city-form">
+      <aside class="col-start-6 mx-auto p-6 card card-round col-7 ">
+        <h2 class="text-left mx-2 p-4 text-xl">Search For A City</h2>
+        <form id="city-form" class="flex items-center">
           <label class="form-label" for="city">City</label>
-          <input name="city" id="city" type="text" autofocus="true" class="form-input" required/>
-          <button type="submit" class="btn">Search</button>
+          <input name="city" id="search-input" type="text" autofocus="true" class="form-input outline-2" required />
+          <button type="submit" class="btn" id="searchBtn">Search</button>
         </form>
       </aside>
-      <section></section>
-      <section></section>
-      <footer></footer>
+      <section id="daily-weather">daily</section>
+      <section id="forcast-weather" >Five Day Forcast</section>
+      <footer>footer</footer>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="./assets/script.js"></script>
