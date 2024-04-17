@@ -1,55 +1,52 @@
-// Creates a variable to store the API key
+
 const APIKey = '951c18a648ee8495defff470c0b80c80';
-// todo: create different query parameters which will require our application to accept user input, so we want to create variables that can hold this input after the users submittion.
-// const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}';
+const cityInputEl = document.querySelector('#city');
 
-// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-
-// function getForcast(lat, lon) {
-//     const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}';
-
-//   fetch(requestAPI) {
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (response) {
-//         for (let i = 0; i < data.length; i++) {
-//             const listItem = document.createElement('li');
-//             listItem.textContent = data[i].html_url;
-//             cityList.appendChild(listItem);
-//         }
-//     });
-//     }
+let city;
 
 const getGeo = async (city) => {
-  const url =
-    'http://api.openweathermap.org/geo/1.0/direct?q=' +
-    city +
-    ',US&limit=1&appid=' +
-    APIKey;
-  console.log(url);
+    const url = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + ',US&limit=1&appid=' + APIKey;
+    console.log(url);
 
-  const response = await fetch(url);
-  const result = await response.json();
-  console.log(result[0]);
-  // keys from result
-  console.log(result[0].lat);
-  console.log(result[0].lon);
+    const response = await fetch(url);
+    const result = await response.json();
+    console.log(result[0]);
+    // keys from result
+    console.log(result[0].lat);
+    console.log(result[0].lon);
     
-let lat = result[0].lat
-let lon = result[0].lon
-
-    // step 1 - add to storeHistory
-    storeHistory(result[0]);    
+    let lat = result[0].lat
+    let lon = result[0].lon
 }
-    // step 2 - lookup daily weather
-    getToday(lat, lon)
-    // step 3 - lookup forecast
-    getForcast(lat, lon)
+//    // step 1 - add to storeHistory
+//     function storeHistory(result[0]) {
+//         if (typeof (storage) !== 'undefined') {  
+//         }
+//     }
 
-};
+   // step 2 - lookup daily weather
+//     getToday(lat, lon)
 
+const getDailyWeather = async function (city) {
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={APIKey}`;
+    const response = await fetch(currentWeatherUrl);
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    }
+  };
+//     // step 3 - lookup forecast
+//     getForcast(lat, lon)
+
+  const getForcastWeather = async function (city) {
+    const fiveDayForcastUrl = `api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIKey}`;
+    const response = await fetch(fiveDayForcastUrl);
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    }
+  };
+    
 // EXAMPLE
 // geoPlace = {
 //     "name": "Atlanta",
@@ -59,6 +56,6 @@ let lon = result[0].lon
 //     "state": "Georgia"
 // }
 
-function storeHistory( geoPlace ) {
-    // paste local storage append code
-}
+    // function storeHistory(geoPlace) {
+    //     // paste local storage append code
+    // }

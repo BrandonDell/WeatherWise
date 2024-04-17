@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <header class="p-5 text-center text-white bg-primary">
@@ -12,8 +13,12 @@
     </header>
     <main>
       <aside class="card card-round col-7 bg-white">
-        <h2></h2>
-
+        <h2 class="card-header text-uppercase">Search For A City</h2>
+        <form id="city-form">
+          <label class="form-label" for="city">City</label>
+          <input name="city" id="city" type="text" autofocus="true" class="form-input" required/>
+          <button type="submit" class="btn">Search</button>
+        </form>
       </aside>
       <section></section>
       <section></section>
